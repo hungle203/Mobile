@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>mobile.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e0957b;}
+.s1 { color: #c9c9d1;}
+.s2 { color: #ffffff;}
+.s3 { color: #62a362;}
+.s4 { color: #e0957b; font-weight: bold;}
+.s5 { color: #676773;}
+.s6 { color: #4dacf0;}
+</style>
+</head>
+<body bgcolor="#1d1d26">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+mobile.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">MOBILE PHONE</span><span class="s0">&lt;/title&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+<span class="s0">&lt;script&gt;</span>
+    <span class="s0">class </span><span class="s1">MobilePhone {</span>
+        <span class="s1">name</span>
+        <span class="s1">battery</span>
+
+        <span class="s1">constructor(name</span><span class="s4">, </span><span class="s1">battery) {</span>
+            <span class="s0">this</span><span class="s1">.name = name</span><span class="s4">;</span>
+            <span class="s0">this</span><span class="s1">.battery = battery</span><span class="s4">;</span>
+            <span class="s0">this</span><span class="s1">.draftBox = []</span><span class="s4">;</span>
+            <span class="s0">this</span><span class="s1">.inBox = []</span><span class="s4">;</span>
+            <span class="s0">this</span><span class="s1">.sendBox = []</span><span class="s4">;</span>
+            <span class="s0">this</span><span class="s1">.status = </span><span class="s0">false</span><span class="s4">;</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Bật máy</span>
+        <span class="s5">// turnOn() {</span>
+        <span class="s5">//     return this.status = true;</span>
+        <span class="s5">// }</span>
+
+        <span class="s5">//Tắt máy</span>
+        <span class="s5">// turnOff() {</span>
+        <span class="s5">//     return this.status = false;</span>
+        <span class="s5">// }</span>
+
+        <span class="s5">//Bật/tắt máy</span>
+        <span class="s1">turnOnOff() {</span>
+            <span class="s0">this</span><span class="s1">.status = !</span><span class="s0">this</span><span class="s1">.status</span><span class="s4">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">getStatus() {</span>
+            <span class="s0">return this</span><span class="s1">.status</span><span class="s4">;</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Kiểm tra pin</span>
+        <span class="s1">checkBattery() {</span>
+            <span class="s0">return this</span><span class="s1">.battery &gt; </span><span class="s6">0 </span><span class="s1">? </span><span class="s0">true </span><span class="s1">: </span><span class="s0">false</span><span class="s4">;</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Tạo tin nhắn ở draftBox</span>
+        <span class="s1">setMess(message) {</span>
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.checkBattery() &amp;&amp; </span><span class="s0">this</span><span class="s1">.getStatus()) {</span>
+                <span class="s0">this</span><span class="s1">.message = message</span><span class="s4">;</span>
+                <span class="s0">this</span><span class="s1">.draftBox.push(message)</span><span class="s4">;</span>
+                <span class="s0">this</span><span class="s1">.battery--</span><span class="s4">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Sạc pin</span>
+        <span class="s1">chargeBattery(battery) {</span>
+            <span class="s0">this</span><span class="s1">.battery = battery</span><span class="s4">;</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Tạo tin nhắn ở inBox</span>
+        <span class="s1">setInbox(message) {</span>
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.checkBattery() &amp;&amp; </span><span class="s0">this</span><span class="s1">.getStatus()) {</span>
+                <span class="s0">this</span><span class="s1">.inBox = </span><span class="s0">this</span><span class="s1">.inBox.concat(message)</span><span class="s4">;</span>
+                <span class="s0">this</span><span class="s1">.battery--</span><span class="s4">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s5">//Gửi tin nhắn</span>
+        <span class="s1">sendMess(phone) {</span>
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.checkBattery() &amp;&amp; </span><span class="s0">this</span><span class="s1">.getStatus() &amp;&amp; phone.getStatus()) {</span>
+                <span class="s0">this</span><span class="s1">.battery--</span><span class="s4">;</span>
+                <span class="s1">phone.setInbox(</span><span class="s0">this</span><span class="s1">.draftBox)</span><span class="s4">;</span>
+                <span class="s0">this</span><span class="s1">.sendBox = </span><span class="s0">this</span><span class="s1">.sendBox.concat(</span><span class="s0">this</span><span class="s1">.draftBox)</span><span class="s4">;</span>
+                <span class="s0">this</span><span class="s1">.draftBox = []</span><span class="s4">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">let </span><span class="s1">nokia = </span><span class="s0">new </span><span class="s1">MobilePhone(</span><span class="s3">'nokia'</span><span class="s4">, </span><span class="s6">100</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s0">let </span><span class="s1">iphone = </span><span class="s0">new </span><span class="s1">MobilePhone(</span><span class="s3">'iphone'</span><span class="s4">, </span><span class="s6">100</span><span class="s1">)</span><span class="s4">;</span>
+<span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>
